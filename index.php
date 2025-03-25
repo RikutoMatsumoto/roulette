@@ -1,39 +1,14 @@
 <?php
-// データベース接続
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "roulette";
+// index.php
+require_once 'UserModel.php';  // 先ほど作ったファイルを読み込む
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("接続失敗: " . $conn->connect_error);
-}
+$userModel = new UserModel();
 
-// ルーレットに表示する名前（announcer = 1）
-$stmt = $conn->prepare("SELECT id, name FROM user WHERE announcer = 1");
-$stmt->execute();
-$result = $stmt->get_result();
-$names = [];
-while ($row = $result->fetch_assoc()) {
-    $names[] = ['id' => $row['id'], 'name' => htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8')];
-}
-$stmt->close();
+// ルーレットに表示する名前
+$names = $userModel->getAnnouncerUsers();
 
-// チェックボックス一覧用（全データ取得）
-$stmt = $conn->prepare("SELECT id, name, announcer FROM user");
-$stmt->execute();
-$result = $stmt->get_result();
-$allUsers = [];
-while ($row = $result->fetch_assoc()) {
-    $allUsers[] = [
-        'id' => $row['id'],
-        'name' => htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8'),
-        'announcer' => (int)$row['announcer']
-    ];
-}
-$stmt->close();
-$conn->close();
+// チェックボックス一覧用
+$allUsers = $userModel->getAllUsers();
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +46,6 @@ $conn->close();
         <h2>ルーレット設定</h2>
         <div>
             <h3>項目名と割合</h3>
-            <!-- <button type="button" class="add">追加</button> -->
             <table id="table">
                 <tr><th>色</th><th>項目名</th><th>割合</th><th>確率</th></tr>
                 <?php foreach ($names as $name): ?>
@@ -80,11 +54,9 @@ $conn->close();
                     <td><input type="text" class="name" value="<?= $name['name'] ?>"></td>
                     <td><input type="number" class="ratio" value="1"></td>
                     <td class="probability"></td>
-                    <!-- <td><button type="button" onclick="rmItem(this)">削除</button></td> -->
                 </tr>
             <?php endforeach; ?>
             </table>
-            <!-- <button type="button" class="add">追加</button> -->
         </div>
     </div>
     <style>
@@ -112,6 +84,11 @@ $conn->close();
                     </td>
                     <td>
                         <a href="delete_user.php?id=<?= $user['id'] ?>" onclick="return confirm('本当に削除しますか？');">削除</a>
+
+                        <!-- <form action="delete_user.php" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                            <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                            <button type="submit">削除</button>
+                        </form> -->
                     </td>
                 </tr>
             <?php endforeach; ?>
