@@ -83,12 +83,10 @@ $allUsers = $userModel->getAllUsers();
                         <input type="checkbox" class="toggle-announcer" data-id="<?= $user['id'] ?>" <?= $user['announcer'] ? 'checked' : '' ?>>
                     </td>
                     <td>
-                        <a href="delete_user.php?id=<?= $user['id'] ?>" onclick="return confirm('本当に削除しますか？');">削除</a>
-
-                        <!-- <form action="delete_user.php" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                        <form action="delete_user.php" method="POST" onsubmit="return confirm('本当に削除しますか？');" style="display:inline;">
                             <input type="hidden" name="id" value="<?= $user['id'] ?>">
                             <button type="submit">削除</button>
-                        </form> -->
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
