@@ -117,28 +117,7 @@ $allUsers = $userModel->getAllUsers();
                 $(this).children(".probability").first().html(probability+"%");
             });
         }
-
-        //追加ボタン 確率の自動計算(再計算)
-        // $('.add').click(function(){
-        //     var add = '<tr class="item"><td><div class="color-indicator" style="background-color:#000000;"></div></td><td><input type="text" class="name" value="項目"></td><td><input type="number" class="ratio" value="1"></td><td class="probability"></td><td><button type="button" onclick="rmItem(this)">削除</button></td></tr>';
-        //     $('#table').append(add);
-        //     recalculate();
-        //     if(mode==Mode.waiting){
-        //         dataFetch();
-        //     }
-        // });
-
-        //削除ボタン 確率の自動計算(再計算)
-        // function rmItem(e){
-        // if($('.ratio').length>2){
-        //     $(e).parent().parent().remove();
-        //     recalculate();
-        //     }
-        //     if(mode==Mode.waiting){
-        //         dataFetch();
-        //     }
-        // }
-
+        
         //変更を検知 確率計算(再計算)
         $('#table').on('change', '.ratio', function(){
             recalculate();

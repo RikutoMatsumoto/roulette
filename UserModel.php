@@ -80,11 +80,17 @@ class UserModel
      * ユーザーを追加
      */
     public function addUser($name) {
+        if (empty($name)) {
+            return false;
+        }
+
         $conn = getConnection();
         $stmt = $conn->prepare("INSERT INTO user (name) VALUES (?)");
         $stmt->bind_param("s", $name);
         $stmt->execute();
         $stmt->close();
         $conn->close();
+
+        return true;
     }
 }
