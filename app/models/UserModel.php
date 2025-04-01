@@ -1,6 +1,9 @@
 <?php
 // UserModel.php
-require_once 'db.php';
+// require_once 'db.php'; //同ディレクトリ
+require_once __DIR__ . '/../../config/db.php'; //１つ上のディレクトリ
+// require_once __DIR__ . '/config/db.php';
+
 
 /**
  * User関連の操作をまとめたクラス

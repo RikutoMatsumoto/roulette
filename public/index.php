@@ -3,7 +3,8 @@
 
 // UserModel.php を読み込み
 // - DB接続やユーザー情報取得のメソッドが定義されている
-require_once 'UserModel.php';
+// require_once 'UserModel.php';
+require_once __DIR__ . '/../app/models/UserModel.php';
 
 // UserModelクラスのインスタンスを生成
 $userModel = new UserModel();
@@ -21,7 +22,7 @@ $allUsers = $userModel->getAllUsers();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>ルーレット</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/roulette/roulette/public/css/styles.css">
 </head>
 <body>
     <div class="container">
@@ -32,8 +33,8 @@ $allUsers = $userModel->getAllUsers();
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script>
-        <script src="./p5.min.js"></script>
-        <script src="./app.js"></script>
+            <script src="/roulette/roulette/public/js/p5.min.js"></script>
+            <script src="/roulette/roulette/public/js/app.js"></script>
         <style>
         .p5Canvas{
             max-width: 800px;
@@ -106,7 +107,7 @@ $allUsers = $userModel->getAllUsers();
                             <input type="checkbox" class="toggle-announcer" data-id="<?= $user['id'] ?>" <?= $user['announcer'] ? 'checked' : '' ?>>
                         </td>
                         <td>
-                            <form action="delete_user.php" method="POST" onsubmit="return confirm('本当に削除しますか？');" style="display:inline;">
+                            <form action="/roulette/roulette/app/controllers/delete_user.php" method="POST" onsubmit="return confirm('本当に削除しますか？');" style="display:inline;">
                                 <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                 <button type="submit">削除</button>
                             </form>
@@ -119,7 +120,7 @@ $allUsers = $userModel->getAllUsers();
 
         <div>
             <h3>新しい名前を追加</h3>
-            <form action="add_user.php" method="POST">
+            <form action="/roulette/roulette/app/controllers/add_user.php" method="POST">
                 <label for="new_name">名前：</label>
                 <input type="text" id="new_name" name="new_name" required>
                 <button type="submit">追加</button>
@@ -156,7 +157,7 @@ $allUsers = $userModel->getAllUsers();
                     var isChecked = $(this).is(":checked") ? 1 : 0;
 
                     $.ajax({
-                        url: "update_announcer.php",
+                        url: "/roulette/roulette/app/controllers/update_announcer.php",
                         type: "POST",
                         data: { id: userId, announcer: isChecked },
                         success: function(response) {

@@ -1,6 +1,7 @@
 <?php
 // add_user.php
-require_once 'UserModel.php';
+// require_once 'UserModel.php';
+require_once __DIR__ . '/../models/UserModel.php';
 
 $userModel = new UserModel();
 
@@ -14,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 追加後に一覧ページにリダイレクト
-    header('Location: index.php');
+    header('Location: /roulette/roulette/public/index.php');
     exit();
 }
 
-header('Location: index.php');
+header('Location: /roulette/roulette/public/index.php');
 exit();

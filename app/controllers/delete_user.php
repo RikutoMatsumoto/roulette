@@ -1,6 +1,6 @@
 <?php
 // delete_user.php
-require_once 'UserModel.php';
+require_once __DIR__ . '/../models/UserModel.php';
 $userModel = new UserModel();
 
 // POSTで受け取る
@@ -10,6 +10,6 @@ if ($id > 0) {
 }
 
 // 削除後に一覧ページへ戻る
-header('Location: index.php');
+header('Location: /roulette/roulette/public/index.php');
 exit;
 ?>
