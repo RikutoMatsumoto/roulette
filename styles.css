@@ -1,0 +1,95 @@
+/* 全体のデザインを整える */
+body {
+  background-color: #f9f9f9;    /* ほんのり明るいグレー */
+  font-family: "Helvetica", "Arial", sans-serif; 
+  color: #333;                  /* 文字色はやや濃いグレー */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: #555; /* すこし抑え目の色に */
+  text-align: center;
+}
+
+h2, h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+button {
+  background-color: #28a745; /* 明るめの青 */
+  color: #fff;
+  border: none;
+  border-radius: 4px; /* 少し角を丸く */
+  padding: 8px 12px;
+  font-size: 1em;
+  cursor: pointer;     /* カーソルを指マークに */
+  margin: 0 4px;       /* ボタン同士に少し間隔 */
+}
+
+/* ボタンにホバーしたときの演出 */
+button:hover {
+  background-color: #0056b3;
+}
+
+.button-row {
+  display: flex;         /* 子要素を横並びに */
+  align-items: center;   /* 垂直方向を中央揃え */
+  /* 必要に応じて width: 100% などを指定 */
+}
+
+/* 中央寄せしたいボタン群をまとめた要素 */
+.center-buttons {
+  margin: 0 auto;         /* 左右マージンをautoにして、中央寄せ */
+  text-align: center;     /* 内部テキストやボタンも中央揃え */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* 枠線が重ならないように */
+  margin-top: 1em;
+  background-color: #fff;    /* 白背景にする */
+}
+
+th, td {
+  border: 1px solid #ccc;    /* 薄いグレーの枠線 */
+  padding: 8px;
+  text-align: left;          /* 文字は左寄せ */
+}
+
+th {
+  background-color: #f2f2f2; /* ヘッダー行を薄いグレー */
+}
+
+/* 全体 */
+.container {
+    max-width: 800px;   /* ページの最大幅を800pxに */
+    margin: 0 auto;     /* 左右のマージンを自動にして中央寄せ */
+    padding: 20px;      /* 余白をつける */
+  }
+
+/* 色の表示を丸にする */
+.color-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;     /* 完全な円形に */
+  display: inline-block;  /* 要素をインラインブロックに */
+}
+
+/* グリッドのホバー色変更 */
+table tr:hover {
+  background-color: #fafafa; /* マウスオーバーで行をほんのり明るく */
+}
+
+/* 結果の表示変更 */
+#result {
+  font-size: 2em;
+  font-weight: bold;
+  color: #d9534f; /* ビビッドな赤系で目立たせる */
+  text-align: center;
+  margin: 1em 0;
+}

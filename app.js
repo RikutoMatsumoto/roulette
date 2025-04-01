@@ -18,7 +18,7 @@ var resultDisplayed = false;
 const ACCEL = 0.01;
 const DECEL = 0.01;
 const MAX_SPEED = 1.0;
-const RADIUS = 100;
+const RADIUS = 150;
 const COLOR_ADJ = 0.4;
 const TRIANGLE_SIZE = 10;
 const MARGIN = 10;
@@ -36,7 +36,7 @@ function preload(){
 }
 
 function setup(){
-    var canvas = createCanvas(600,400);
+    var canvas = createCanvas(800,400);
     canvas.parent('canvas');
     textSize(20);
     stroke(0,0,0);
